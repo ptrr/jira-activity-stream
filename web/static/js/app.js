@@ -64,7 +64,7 @@ chan.on("test:message", payload => {
   	$(`<a href='#' style='display: block' class='list-group-item list-group-item-success'><abbr class='timeago' title='${Date()}'></abbr> &nbsp; ${payload.content}</a>`).fadeIn('slow').removeClass('list-group-item-success', 1000)
   )
   $("abbr.timeago").timeago();
-  messageContainer.children('a').slice(1000).remove();
+  messageContainer.children('a').slice(50).remove();
 })
 
 chan.on("acvitity:update", payload => {messageContainer.append(`<br/>[${Date()}] ${payload.content}`)})
