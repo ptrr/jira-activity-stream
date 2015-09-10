@@ -19,12 +19,33 @@ defmodule Jirasocket.ActivityChannel do
 
   intercept ["test:message"]
   def handle_in("test:message", payload, socket) do
+    IO.puts "ignoring an incoming test:message"
     broadcast! socket, "test:message", payload
     {:noreply, socket}
   end
 
   def handle_out("test:message", payload, socket) do
-    push socket, "test:message", payload
+    IO.puts "sending 2 new shits"
+    IO.inspect Jirasocket.Blah.start_link
+    IO.inspect Jirasocket.Blah.jira_thingy
+
+#   id = 22817
+#   fields = ExJira.API.Issues.find(id).fields
+#   status = fields.status.name
+#   description = fields.description
+#   IO.puts "Item #{id} (#{status}) : description: #{description}"
+
+    since_start_of_day = ExJira.API.Search.using_jql("sprint = \"Frontend (20 aug t/m 2 sep)\" AND updatedDate < \"2015/09/11 00:00\" AND updatedDate >= \"2015/09/10 00:00\"").issues
+    IO.inspect Enum.map(since_start_of_day, fn (issue) ->
+      uniq_key = "#{issue.key}#{issue.fields.updated}"
+      if Jirasocket.Blah.count_for(uniq_key) == nil do
+        new_payload = %{content: "#{issue.key} was modified!", type: 'start'}
+        IO.inspect new_payload
+        push socket, "test:message", new_payload
+      end
+      Jirasocket.Blah.add_word uniq_key
+    end)
+
     {:noreply, socket}
   end
 
