@@ -24,7 +24,7 @@ import {Socket} from "deps/phoenix/web/static/js/phoenix"
 let socket = new Socket("/jira")
 socket.connect()
 let chan = socket.channel("activity:test", {})
-let messageContainer = $(".jumbotron")
+let messageContainer = $(".list-group")
 
 chan.join().receive("ok", chan => {
   console.log("Welcome to Jira Activity")
@@ -32,17 +32,44 @@ chan.join().receive("ok", chan => {
 
 //TESTING
 var rec = function() {
-	chan.push("test:message", {content: "test"});
-	chan.push("activity:update", {type: 'update', content: "UPDATE"});
+	//chan.push("test:message", {content: "test"});
+	chan.push("activity:update", {type: 'complete', content: "UPDATE", name: "Peter", item: "BE-999"});
+	//console.log("Sending Test message")
+	setTimeout(rec, (Math.random() * 10000) + 1);
+}
 
-	console.log("Sending Test message")
-	setTimeout(rec, 500);
+var rec2 = function() {
+	//chan.push("test:message", {content: "test"});
+	chan.push("activity:update", {type: 'start', content: "UPDATE", name: "Alex", item: "ST-999"});
+	//console.log("Sending Test message")
+	setTimeout(rec2, (Math.random() * 10000) + 1);
+}
+
+var rec3 = function() {
+	//chan.push("test:message", {content: "test"});
+	chan.push("activity:update", {type: 'update', content: "UPDATE", name: "Marcel", item: "BL-999"});
+	//console.log("Sending Test message")
+	setTimeout(rec3, (Math.random() * 10000) + 1);
+}
+
+var rec3 = function() {
+	//chan.push("test:message", {content: "test"});
+	chan.push("activity:update", {type: 'new', content: "UPDATE", name: "Koop", item: "BL-999"});
+	//console.log("Sending Test message")
+	setTimeout(rec3, (Math.random() * 10000) + 1);
 }
 
 chan.on("test:message", payload => {
-  messageContainer.append(`<br/>[${Date()}] ${payload.content}`)
+  messageContainer.prepend(
+  	$(`<a href='#' style='display: block' class='list-group-item list-group-item-success'><abbr class='timeago' title='${Date()}'></abbr> &nbsp; ${payload.content}</a>`).fadeIn('slow').removeClass('list-group-item-success', 1000)
+  )
+  $("abbr.timeago").timeago();
+  messageContainer.children('a').slice(1000).remove();
 })
 
 chan.on("acvitity:update", payload => {messageContainer.append(`<br/>[${Date()}] ${payload.content}`)})
 
 rec()
+rec2()
+rec3()
+rec4()

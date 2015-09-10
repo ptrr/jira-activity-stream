@@ -28,11 +28,23 @@ defmodule Jirasocket.ActivityChannel do
     {:noreply, socket}
   end
 
-  def activity_message(%{type: "update", content: _}) do
-    %{ type: 'update', content: "Updated message" }
+  def activity_message(message = %{"content" => _, "type" => "start", "name" => _, "item" => _}) do
+    %{ type: 'start', content: "#{message["name"]} is working on #{message["item"]} now!" }
   end
 
-  def activity_message(%{type: _, content: _}) do
-    %{ type: 'unknown', content: "Unknown Message" }
+  def activity_message(message = %{"content" => _, "type" => "update", "name" => _, "item" => _}) do
+    %{ type: 'update', content: "#{message["name"]} changed #{message["item"]}" }
   end
+
+  def activity_message(message = %{"content" => _, "type" => "complete", "name" => _, "item" => _}) do
+    %{ type: 'update', content: "#{message["name"]} is done with #{message["item"]}" }
+  end
+
+  def activity_message(message = %{"content" => _, "type" => "new", "name" => _, "item" => _}) do
+    %{ type: 'update', content: "#{message["name"]} added #{message["item"]}" }
+  end
+
+  # def activity_message(%{type: _, content: _}) do
+  #   %{ type: 'unknown', content: "Unknown Message" }
+  # end
 end
