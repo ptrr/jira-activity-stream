@@ -2,7 +2,7 @@ use Mix.Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :jira_dashboard_frontend, JiraDashboard.Endpoint,
+config :jira_dashboard, JiraDashboard.Endpoint,
   http: [port: 4001],
   server: false
 
@@ -13,10 +13,10 @@ config :logger, level: :warn
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :jira_dashboard_frontend, JiraDashboard.Repo,
+config :jira_dashboard, JiraDashboard.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "jira_dashboard_frontend_test",
+  database: "jira_dashboard_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

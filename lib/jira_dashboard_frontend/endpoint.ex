@@ -1,5 +1,5 @@
 defmodule JiraDashboard.Endpoint do
-  use Phoenix.Endpoint, otp_app: :jira_dashboard_frontend
+  use Phoenix.Endpoint, otp_app: :jira_dashboard
 
   socket "/socket", JiraDashboard.UserSocket
   socket "/jira", JiraDashboard.ActivitySocket
@@ -9,7 +9,7 @@ defmodule JiraDashboard.Endpoint do
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :jira_dashboard_frontend, gzip: false,
+    at: "/", from: :jira_dashboard, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -33,7 +33,7 @@ defmodule JiraDashboard.Endpoint do
 
   plug Plug.Session,
     store: :cookie,
-    key: "_jira_dashboard_frontend_key",
+    key: "_jira_dashboard_key",
     signing_salt: "rFRpyJ4j"
 
   plug JiraDashboard.Router

@@ -6,7 +6,7 @@
 use Mix.Config
 
 # Configures the endpoint
-config :jira_dashboard_frontend, JiraDashboard.Endpoint,
+config :jira_dashboard, JiraDashboard.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "no0BB/N4P+tArUfjYkdeaMOGXAPAlbuZBRbsdcSTabGDrnHv+f9vVGivVvvQlxbI",
