@@ -34,6 +34,9 @@ defmodule JiraDashboard.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:oauth, git: "https://github.com/tim/erlang-oauth.git", override: true},
+     {:exjira, git: "https://github.com/lypanov/exjira.git"}
+    ]
   end
 end
