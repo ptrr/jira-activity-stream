@@ -1,3 +1,3 @@
-defmodule Jirasocket.LayoutViewTest do
-  use Jirasocket.ConnCase, async: true
+defmodule JiraDashboard.LayoutViewTest do
+  use JiraDashboard.ConnCase, async: true
 end

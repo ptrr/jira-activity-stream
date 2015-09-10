@@ -7,22 +7,40 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>JIRA</title>
+    <title>Hello Phoenix!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
-    <div class="container" role="main">
+    <div class="wrapper" role="main">
       <div class="header">
-      <h1>Jira Activity Stream</h1>
+        <div class="container-fluid">
+          <h1 class="navbar-brand pull-left">
+            <span>
+              <img src="/images/phoenix.png" width="75%">
+            </span>
+          </h1>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><%= link "DASHBOARD", to: dashboard_path(@conn, :index) %></li>
+              <li><%= link "TASKS", to: task_path(@conn, :index) %></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-      <%= @inner %>
+      <div class="container-fluid">
+        <div class="main-content">
+          <div class="main-head">
+            <%= @inner %>
+          </div>
+        </div>
+      </div>
 
-    </div> <!-- /container -->
+    </div>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="//timeago.yarp.com/jquery.timeago.js"></script>
     <script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>

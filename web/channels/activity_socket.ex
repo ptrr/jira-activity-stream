@@ -1,8 +1,8 @@
-defmodule Jirasocket.ActivitySocket do
+defmodule JiraDashboard.ActivitySocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "activity:*", Jirasocket.ActivityChannel
+  channel "activity:*", JiraDashboard.ActivityChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

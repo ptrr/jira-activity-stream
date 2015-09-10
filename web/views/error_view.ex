@@ -1,5 +1,5 @@
-defmodule Jirasocket.ErrorView do
-  use Jirasocket.Web, :view
+defmodule JiraDashboard.ErrorView do
+  use JiraDashboard.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

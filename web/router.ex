@@ -1,5 +1,5 @@
-defmodule Jirasocket.Router do
-  use Jirasocket.Web, :router
+defmodule JiraDashboard.Router do
+  use JiraDashboard.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,16 @@ defmodule Jirasocket.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Jirasocket do
+  scope "/", JiraDashboard do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/dashboard", DashboardController, :index
+    resources "/tasks", TaskController
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Jirasocket do
+  # scope "/api", JiraDashboard do
   #   pipe_through :api
   # end
 end

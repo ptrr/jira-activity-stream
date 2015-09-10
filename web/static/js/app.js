@@ -32,39 +32,39 @@ chan.join().receive("ok", chan => {
 
 //TESTING
 var rec = function() {
-	//chan.push("test:message", {content: "test"});
-	chan.push("activity:update", {type: 'complete', content: "UPDATE", name: "Peter", item: "BE-999"});
-	//console.log("Sending Test message")
-	setTimeout(rec, (Math.random() * 10000) + 1);
+  //chan.push("test:message", {content: "test"});
+  chan.push("activity:update", {type: 'complete', content: "UPDATE", name: "Peter", item: "BE-999"});
+  //console.log("Sending Test message")
+  setTimeout(rec, (Math.random() * 10000) + 1);
 }
 
 var rec2 = function() {
-	//chan.push("test:message", {content: "test"});
-	chan.push("activity:update", {type: 'start', content: "UPDATE", name: "Alex", item: "ST-999"});
-	//console.log("Sending Test message")
-	setTimeout(rec2, (Math.random() * 10000) + 1);
+  //chan.push("test:message", {content: "test"});
+  chan.push("activity:update", {type: 'start', content: "UPDATE", name: "Alex", item: "ST-999"});
+  //console.log("Sending Test message")
+  setTimeout(rec2, (Math.random() * 10000) + 1);
 }
 
 var rec3 = function() {
-	//chan.push("test:message", {content: "test"});
-	chan.push("activity:update", {type: 'update', content: "UPDATE", name: "Marcel", item: "BL-999"});
-	//console.log("Sending Test message")
-	setTimeout(rec3, (Math.random() * 10000) + 1);
+  //chan.push("test:message", {content: "test"});
+  chan.push("activity:update", {type: 'update', content: "UPDATE", name: "Marcel", item: "BL-999"});
+  //console.log("Sending Test message")
+  setTimeout(rec3, (Math.random() * 10000) + 1);
 }
 
-var rec3 = function() {
-	//chan.push("test:message", {content: "test"});
-	chan.push("activity:update", {type: 'new', content: "UPDATE", name: "Koop", item: "BL-999"});
-	//console.log("Sending Test message")
-	setTimeout(rec3, (Math.random() * 10000) + 1);
+var rec4 = function() {
+  //chan.push("test:message", {content: "test"});
+  chan.push("activity:update", {type: 'new', content: "UPDATE", name: "Koop", item: "BL-999"});
+  //console.log("Sending Test message")
+  setTimeout(rec4, (Math.random() * 10000) + 1);
 }
 
 chan.on("test:message", payload => {
   messageContainer.prepend(
-  	$(`<a href='#' style='display: block' class='list-group-item list-group-item-success'><abbr class='timeago' title='${Date()}'></abbr> &nbsp; ${payload.content}</a>`).fadeIn('slow').removeClass('list-group-item-success', 1000)
+    $(`<a href='#' style='display: block' class='list-group-item list-group-item-success'><abbr class='timeago' title='${Date()}'></abbr> &nbsp; ${payload.content}</a>`).fadeIn('slow').removeClass('list-group-item-success', 1000)
   )
   $("abbr.timeago").timeago();
-  messageContainer.children('a').slice(50).remove();
+  messageContainer.children('a').slice(18).remove();
 })
 
 chan.on("acvitity:update", payload => {messageContainer.append(`<br/>[${Date()}] ${payload.content}`)})

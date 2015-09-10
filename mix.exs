@@ -1,8 +1,8 @@
-defmodule Jirasocket.Mixfile do
+defmodule JiraDashboard.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :jirasocket,
+    [app: :jira_dashboard_frontend,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -16,7 +16,7 @@ defmodule Jirasocket.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [mod: {Jirasocket, []},
+    [mod: {JiraDashboard, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
                     :phoenix_ecto, :postgrex]]
   end
@@ -29,7 +29,7 @@ defmodule Jirasocket.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.17"},
+    [{:phoenix, "~> 1.0.2"},
      {:phoenix_ecto, "~> 1.1"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.1"},

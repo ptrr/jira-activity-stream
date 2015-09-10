@@ -23,6 +23,14 @@ form.link, form.button {
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
+
+  h1 {
+    max-width: 364px;
+
+    span > img {
+      margin-top: -30px;
+    }
+  }
 }
 .logo {
   width: 519px;
@@ -76,5 +84,27 @@ form.link, form.button {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+}
+
+ul.nav.navbar-nav {
+  margin-top: 5px;
+
+  > li > a {
+    color: #f67938;
+
+    &:hover {
+      border-bottom: 3px solid #f67938;
+    }
+  }
+}
+
+.panel-primary {
+  border-color: #ddd !important;
+
+  > .panel-heading {
+    color: black;
+    background-color: white;
+    border-color: transparent;
   }
 }

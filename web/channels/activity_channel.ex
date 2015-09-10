@@ -1,6 +1,6 @@
-defmodule Jirasocket.ActivityChannel do
+defmodule JiraDashboard.ActivityChannel do
   use Phoenix.Channel
-  
+
   def join("activity:test", auth_msg, socket) do
     {:ok, socket}
   end

@@ -1,3 +1,3 @@
-defmodule Jirasocket.PageView do
-  use Jirasocket.Web, :view
+defmodule JiraDashboard.PageView do
+  use JiraDashboard.Web, :view
 end

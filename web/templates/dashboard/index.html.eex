@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-9">
+    <%= for group <- @grouped_tasks do %>
+      <div class="col-sm-6 col-md-4">
+        <h1><%= hd(group).status %></h1>
+        <%= for task <- group do %>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3><%= task.title %></h3>
+            </div>
+            <div class="panel-body">
+              <p><%= task.description %></p>
+              <p><b><%= task.weight %></b></p>
+            </div>
+            <div class="panel-footer">
+              <%= link "Show", to: task_path(@conn, :show, task), class: "btn btn-default btn-xs" %>
+              <%= link "Edit", to: task_path(@conn, :edit, task), class: "btn btn-default btn-xs" %>
+              <%= link "Delete", to: task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs pull-right" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="list-group"></div>
+    </div>
+  </div>
+</div>

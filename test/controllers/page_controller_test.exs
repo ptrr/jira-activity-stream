@@ -1,5 +1,5 @@
-defmodule Jirasocket.PageControllerTest do
-  use Jirasocket.ConnCase
+defmodule JiraDashboard.PageControllerTest do
+  use JiraDashboard.ConnCase
 
   test "GET /" do
     conn = get conn(), "/"
